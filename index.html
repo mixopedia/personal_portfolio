@@ -43,7 +43,8 @@
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Muhammed Navas</h1>
-        <p class="section__text__p2">Document Controller</p>
+        <p> and i'm a</p>
+        <p class="section__text__p2"><!--Document Controller--></p>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
@@ -105,8 +106,8 @@
                 alt="Education icon"
                 class="icon"
               />
-              <h3>Education</h3>
-              <p>B.Sc. Bachelors Degree<br />M.Sc. Masters Degree</p>
+              <h3>Education & Certification</h3>
+              <p>Higher Secondary Education<br />Google IT Support Professional Certificate<br /></p>
             </div>
           </div>
           <div class="text-container">
@@ -384,5 +385,53 @@
       <p>Copyright &#169; 2023 Muhammed Navas. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
+    <!-- Add this script at the end of your HTML, just before the closing </body> tag -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const designations = ["Document Controller", "Administrator", "Web Developer", "Youtuber", "Designer"];
+    const designationElement = document.querySelector('.section__text__p2');
+    const marginTop = window.getComputedStyle(designationElement).marginTop;
+    const newMarginBottom = '40px'; // Adjust the bottom margin value as needed
+
+    // Set a dynamic height for the element containing the animating text
+    designationElement.style.height = `calc(${designationElement.offsetHeight}px + ${marginTop} + ${newMarginBottom})`;
+
+
+    function typeDesignations(index) {
+      const currentDesignation = designations[index];
+      let charIndex = 0;
+
+      function type() {
+        if (charIndex < currentDesignation.length) {
+          designationElement.textContent += currentDesignation.charAt(charIndex);
+          charIndex++;
+          setTimeout(type, 100); // Adjust the typing speed here (in milliseconds)
+        } else {
+          setTimeout(erase, 1000); // Wait for a second, then start erasing
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          designationElement.textContent = currentDesignation.substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, 50); // Adjust the erasing speed here (in milliseconds)
+        } else {
+          setTimeout(function () {
+            typeDesignations((index + 1) % designations.length); // Move to the next designation
+          }, 500); // Wait for half a second before typing the next designation
+        }
+      }
+
+      type();
+    }
+
+    // Start the animation
+    typeDesignations(0);
+  });
+</script>
+
+
+
   </body>
 </html>
