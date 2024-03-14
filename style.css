@@ -430,3 +430,94 @@ footer {
 footer p {
   text-align: center;
 }
+
+.rolling-text-container {
+  height: 40px; /* Adjust height as needed */
+  overflow: hidden;
+  position: relative;
+}
+
+.rolling-text {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.current-text {
+  top: 0;
+  animation: roll-up 2s infinite;
+}
+
+.next-text {
+  top: 100%;
+  animation: roll-up 2s infinite;
+}
+
+@keyframes roll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+
+.rolling-text-container {
+    height: 40px; /* Adjust height as needed */
+    overflow: hidden;
+    position: relative;
+}
+
+.rolling-text {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.current-text {
+    top: 0;
+    animation: roll-up 2s infinite;
+}
+
+.next-text {
+    top: 100%;
+    animation: roll-up 2s infinite;
+}
+
+@keyframes roll-up {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+
+/*
+the Styling for rolling text at experience section
+*/
+
+
+.rotating-text {
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: white;
+  transform: translateX(-80px);
+}
+.rotating-text p {
+  display: inline-flex;
+
+  vertical-align: top;
+}
+.rotating-text p .word {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+}
+.rotating-text p .word .letter {
+  transform-origin: center center 5px;
+}
+.rotating-text p .word .letter.out {
+  transform: rotateX(90deg);
+  transition: 0.32s cubic-bezier(0.6, 0, 0.7, 0.2);
+}
+.rotating-text p .word .letter.in {
+  transition: 0.38s ease;
+}
+.rotating-text p .word .letter.behind {
+  transform: rotateX(-90deg);
+}
